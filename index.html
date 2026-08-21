@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Guide: Secure Loan Application (Multilingual)</title>
+    <link rel="stylesheet" href="stycle.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Voice Guide: Secure Loan Application 🗣️🔒</h1>
+            <p class="subtitle">A clear, 3-step process guided by your voice in Tamil, Hindi, or English</p>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress" id="progress-bar"></div>
+        </div>
+
+        <div id="status" class="status-message">Click "Start Guide" to begin language selection.</div>
+        
+        <div class="output-area">
+            <h2>Guide's Output:</h2>
+            <div id="guide-output" class="output guide-bg"></div>
+        </div>
+
+        <div class="output-area">
+            <h2>Your Input (Voice Transcript):</h2>
+            <div id="user-input" class="output user-bg"></div>
+        </div>
+
+        <div class="button-group">
+            <button id="prevButton" disabled>Previous</button>
+            <button id="startButton">Start Guide</button>
+            <button id="micButton" disabled>Speak Now / Submit Text</button>
+            <button id="nextButton" disabled>Next</button>
+        </div>
+
+        <div class="assistant-controls">
+            <label for="assistantToggle" class="assist-label">Assistant Mode</label>
+            <input type="checkbox" id="assistantToggle" />
+            <button id="voiceHelpButton">Voice Help</button>
+            <div class="assist-hint">Try commands: "next", "repeat", "help", "start over", "cancel"</div>
+        </div>
+        
+        <!-- Step 1: Language Selection -->
+        <div id="page-1-lang" class="page-container">
+            <h3>Step 1: Language Selection</h3>
+            <div class="language-select-info">
+                <strong>Instruction:</strong> Click "Start Guide" and <strong>SPEAK</strong> your language: <strong>English, Hindi, or Tamil.</strong>
+            </div>
+        </div>
+
+        <!-- Step 2: User Authentication -->
+        <div id="page-2-auth" class="page-container hidden-page">
+            <h3>Step 2: User Authentication</h3>
+            <div class="auth-container">
+                <div class="form-field" id="field-AuthAccount">
+                    <label for="auth-account-input">Account/Mobile Number (10 Digits):</label>
+                    <input type="text" id="auth-account-input" disabled placeholder="Speak or type your 10-digit number individually">
+                </div>
+                <div class="form-field" id="field-AuthOTP">
+                    <label for="auth-otp-input">4-Digit OTP:</label>
+                    <input type="text" id="auth-otp-input" disabled placeholder="Speak or type the 4-digit OTP">
+                </div>
+                <div id="mock-otp-area" class="mock-otp-area">
+                    <div id="mock-otp-text" class="mock-otp-text" hidden>Mock OTP: <strong id="mock-otp-value">----</strong></div>
+                    <button id="mock-otp-autofill" class="small-btn" hidden>Auto-fill OTP</button>
+                    <button id="mock-otp-resend" class="small-btn" hidden>Resend OTP</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Loan Application Form -->
+        <div id="page-3-form" class="page-container hidden-page">
+            <h3>Step 3: Loan Application Form</h3>
+            <div class="form-container">
+                <h4>Sample Loan Details</h4>
+                <div class="form-field" id="field-ApplicantName">
+                    <label for="form-name">1. Applicant Full Name:</label>
+                    <input type="text" id="form-name" disabled placeholder="Fill this field with your voice or text...">
+                </div>
+                <div class="form-field" id="field-LoanAmount">
+                    <label for="form-amount">2. Loan Amount (₹):</label>
+                    <input type="text" id="form-amount" disabled placeholder="Fill this field with your voice or text...">
+                </div>
+                <div class="form-field" id="field-LoanPurpose">
+                    <label for="form-purpose">3. Loan Purpose:</label>
+                    <input type="text" id="form-purpose" disabled placeholder="Fill this field with your voice or text...">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Final Data Display -->
+        <div id="final-data" class="final-data-area">
+            <h3>📝 Final Processed Data:</h3>
+            <pre id="data-display">No data submitted yet.</pre>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+                <button id="submitButton">Submit To Server</button>
+                <button id="downloadPdfButton">Download PDF</button>
+                <button id="printButton">Print</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- jsPDF for client-side PDF fallback when server is unavailable -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+</html>
